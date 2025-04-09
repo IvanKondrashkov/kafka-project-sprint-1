@@ -1,0 +1,2 @@
+docker-compose exec kafka-0 kafka-topics.sh --create --topic orders --bootstrap-server kafka-0:9092 --partitions 3 --replication-factor 2
+docker-compose exec kafka-0 kafka-topics.sh --describe --topic orders --bootstrap-server kafka-0:9092
