@@ -1,0 +1,45 @@
+server:
+  port: 9090
+
+spring:
+  kafka:
+    bootstrap-servers: kafka-0:9092,kafka-1:9092,kafka-2:9092
+
+    # Producer settings
+    producer:
+      acks: all
+      retries: 3
+      properties:
+        min.insync.replicas: 2
+
+    # Consumer settings
+    pull:
+      consumer:
+        group:
+          id: orders-group-pull
+        auto:
+          offset:
+            reset: earliest
+        enable:
+          auto:
+            commit: false
+        max:
+          poll:
+            records: 100
+        fetch:
+          min:
+            bytes: 10000
+
+    push:
+      consumer:
+        group:
+          id: orders-group-push
+        auto:
+          offset:
+            reset: earliest
+        enable:
+          auto:
+            commit: true
+        max:
+          poll:
+            records: 1

@@ -1,0 +1,2 @@
+docker exec -it kafka-0 kafka-topics.sh --create --topic orders --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2
+docker exec -it kafka-0 kafka-topics.sh --describe --topic orders --bootstrap-server localhost:9092
